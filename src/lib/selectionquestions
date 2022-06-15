@@ -1,0 +1,10 @@
+selectionQuestions = [
+  {
+    type: "list",
+    name: "Proceed",
+    message: " What would you like to do next:",
+    choices: ["Add an engineer", "Add an intern", "Quit application"],
+  },
+];
+
+module.exports = { selectionQuestions };
