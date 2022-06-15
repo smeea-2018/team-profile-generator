@@ -15,24 +15,36 @@ describe("Employee", () => {
 
       const actual = obj.getName();
       expect(actual).toEqual(expected);
-      console.log(actual);
     });
   });
 
-  //   Test case 2
-  describe("getName", () => {
-    it("should return the test fail message", () => {
-      const expected = "Bob";
+  //   Test case 3
+  describe("getId", () => {
+    it("should return expected id", () => {
+      const expected = 1;
 
       const name = "Adam";
       const email = "Adam@gmail.com";
       const id = 1;
       const obj = new Employee(name, id, email);
 
-      const actual = obj.getName();
-      console.log(actual);
+      const actual = obj.getId();
+
       expect(actual).toEqual(expected);
-      console.log(obj.getName());
+    });
+  });
+
+  describe("getEmail", () => {
+    it("should return expected email id", () => {
+      const expected = "adam@gmail.com";
+
+      const name = "Adam";
+      const email = "adam@gmail.com";
+      const id = 1;
+      const obj = new Employee(name, id, email);
+
+      const actual = obj.getEmail();
+      expect(actual).toEqual(expected);
     });
   });
 });
