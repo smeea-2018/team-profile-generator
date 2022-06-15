@@ -1,3 +1,4 @@
+const answers = require("../index");
 class Employee {
   constructor(name, id, email, role) {
     this.name = name;
@@ -21,5 +22,7 @@ class Employee {
     return this.role;
   }
 }
+
+const employee = new Employee(answers.name, answers.id, answers.email);
 
 module.exports = Employee;
