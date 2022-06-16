@@ -7,7 +7,7 @@ describe("Engineer", () => {
 
       const engineer = new Engineer("Jane", 13, "Jane@gmail.com", "jane12");
 
-      const actual = engineer.getgithubName();
+      const actual = engineer.getGithubName();
 
       expect(actual).toEqual(expected);
     });

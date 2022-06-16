@@ -4,9 +4,9 @@ const { Manager } = require("./lib/Manager");
 //Import modules containing questions for different employee categories
 const {
   managerQuestions,
-  selectionQuestions,
   engineerQuestions,
   internQuestions,
+  selectionQuestions,
 } = require("./utils/questions");
 
 const answers = [];
@@ -14,9 +14,10 @@ let inProgress = true;
 
 const init = async () => {
   const managerAnswers = await inquirer.prompt(managerQuestions);
-  //   console.log(answers);
+
+  // once you have the answers, create a new manager object and pass in these answers to the constructor
+
   answers.push(managerAnswers);
-  //   console.log(answers);
 
   while (inProgress) {
     const selection = await inquirer.prompt(selectionQuestions);
