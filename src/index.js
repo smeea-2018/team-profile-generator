@@ -6,6 +6,16 @@ const { Manager } = require("./lib/Manager");
 const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
 
+const {
+  managerQuestions,
+  engineerQuestions,
+  internQuestions,
+  selectionQuestions,
+} = require("./utils/questions");
+
+let team = [];
+let inProgress = true;
+
 const createCard = () => {
   return `<div class="card" style="width: 18rem">
   <div class="card-header">
@@ -56,7 +66,7 @@ const htmlGenerator = (team) => {
     </header>
     <main id="main" class="main">
     <div class = "d-flex flex-row flex-row justify-content-around mt-5" >
-      ${createCards}
+      ${createCards(team)}
       </div>
     </main>
     <script src="index.js"></script>
@@ -80,15 +90,6 @@ const htmlGenerator = (team) => {
 };
 
 //Import modules containing questions for different employee categories
-const {
-  managerQuestions,
-  engineerQuestions,
-  internQuestions,
-  selectionQuestions,
-} = require("./utils/questions");
-
-const team = [];
-let inProgress = true;
 
 const init = async () => {
   const managerAnswers = await inquirer.prompt(managerQuestions);
