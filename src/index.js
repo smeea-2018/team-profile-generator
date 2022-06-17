@@ -37,7 +37,7 @@ let inProgress = true;
 //   });
 // };
 
-const createcard = (teamMembers) => {
+const createManagerCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
   <div class="card-header">
@@ -57,6 +57,45 @@ const createcard = (teamMembers) => {
   });
 };
 
+const createEngineerCard = (teamMembers) => {
+  return teamMembers.map((member) => {
+    return `<div class="card" style="width: 18rem">
+  <div class="card-header">
+    jane
+    <p class="card-text">${member.role}</p>
+  </div>
+  <div class="card-body">
+    <div class="card" style="width: 15rem">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${member.role} Id: ${member.id}</li>
+        <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
+        <li class="list-group-item">${member.role} github: ${member.githubName}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
+  });
+};
+
+const createInternCard = (teamMembers) => {
+  return teamMembers.map((member) => {
+    return `<div class="card" style="width: 18rem">
+  <div class="card-header">
+    jane
+    <p class="card-text">${member.role}</p>
+  </div>
+  <div class="card-body">
+    <div class="card" style="width: 15rem">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${member.role} Id: ${member.id}</li>
+        <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
+        <li class="list-group-item">${member.role} School: ${member.school}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
+  });
+};
 const createCards = (team) => {
   // let teamManager = [];
   const teamManager = team.filter(function (employee) {
@@ -73,9 +112,9 @@ const createCards = (team) => {
   let teamIntern = [];
   teamIntern = team.filter((employee) => employee.role === "Intern");
   console.log("in" + teamIntern);
-  const managerCard = createcard(teamManager);
-  const engineerCard = createcard(teamEngineer);
-  const internCard = createcard(teamIntern);
+  const managerCard = createManagerCard(teamManager);
+  const engineerCard = createEngineerCard(teamEngineer);
+  const internCard = createInternCard(teamIntern);
 
   return `${managerCard}${engineerCard}${internCard}`;
 };

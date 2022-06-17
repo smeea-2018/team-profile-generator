@@ -9,14 +9,4 @@ describe("Engineer", () => {
 
     expect(actual).toEqual(expected);
   });
-
-  it("should return Intern", () => {
-    const expected = "Engineer";
-
-    const engineer = new Engineer("Jane", 13, "Jane@gmail.com", "jane12");
-
-    const actual = engineer.getRole();
-
-    expect(actual).toEqual(expected);
-  });
 });
