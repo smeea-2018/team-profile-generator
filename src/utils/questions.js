@@ -63,12 +63,6 @@ const engineerQuestions = [
     name: "githubUserName",
     message: "Please enter engineer github username::",
   },
-
-  {
-    type: "input",
-    name: "email",
-    message: "Please enter your email address:",
-  },
 ];
 
 const internQuestions = [
