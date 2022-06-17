@@ -16,25 +16,24 @@ const {
 let team = [];
 let inProgress = true;
 
-const createCard = () => {
-  return `<div class="card" style="width: 18rem">
+const createCard = (team) => {
+  return team.map((member) => {
+    return `<div class="card" style="width: 18rem">
   <div class="card-header">
     jane
-    <p class="card-text">Manager</p>
+    <p class="card-text">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">managerId:</li>
-        <li class="list-group-item">managerEmail:</li>
-        <li class="list-group-item">m:</li>
+        <li class="list-group-item">${member} Id: ${member.id}</li>
+        <li class="list-group-item">${member} Email: <a href = "mailto:someone@gmail.com.com" target = "_blank">${member.email}</a></li>
+        <li class="list-group-item">${member} Office Number:</li>
       </ul>
     </div>
   </div>
 </div>`;
-};
-const createCards = (team) => {
-  team.map((card) => card.createCard()).join("");
+  });
 };
 
 // Generate html cards
@@ -60,13 +59,14 @@ const htmlGenerator = (team) => {
   </head>
   <body><header
       id="header "
-      class="header border border-dark h-25 font-weight-bold bg-info text-white"
+      class="jumbotron border border-dark h-25 font-weight-bold bg-info text-white"
     >
       <h2 class="text-center justify-content-center align-middle">My Team</h2>
+       <hr class="my-4">
     </header>
     <main id="main" class="main">
     <div class = "d-flex flex-row flex-row justify-content-around mt-5" >
-      ${createCards(team)}
+      ${createCard(team)}
       </div>
     </main>
     <script src="index.js"></script>
@@ -92,17 +92,18 @@ const htmlGenerator = (team) => {
 //Import modules containing questions for different employee categories
 
 const init = async () => {
-  const managerAnswers = await inquirer.prompt(managerQuestions);
+  // const managerAnswers = await inquirer.prompt(managerQuestions);
 
   const manager = new Manager(
-    managerAnswers.name,
-    managerAnswers.id,
-    managerAnswers.email,
-    managerAnswers.officeNumber
+    await inquirer.prompt(managerQuestions)
+    // managerAnswers.name,
+    // managerAnswers.id,
+    // managerAnswers.email,
+    // managerAnswers.officeNumber
   );
 
   team.push(manager);
-  console.log(managerAnswers);
+  console.log(manager);
 
   // once you have the answers, create a new manager object and pass in these answers to the constructor
 

@@ -39,4 +39,17 @@ describe("Employee", () => {
     const actual = obj.getEmail();
     expect(actual).toEqual(expected);
   });
+
+  it("should return expected role", () => {
+    const expected = "Employee";
+
+    const name = "Adam";
+    const email = "adam@gmail.com";
+    const id = 1;
+    const employee = new Employee(name, id, email);
+    employee.getRole();
+
+    const actual = obj.getRole();
+    expect(actual).toEqual(expected);
+  });
 });
