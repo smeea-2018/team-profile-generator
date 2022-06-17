@@ -1,8 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
 
 const { Employee } = require("./lib/Employee");
-const { Manager } = require("./lib/Manager");
+const Manager = require("./lib/Manager");
 const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
 
@@ -16,8 +17,28 @@ const {
 let team = [];
 let inProgress = true;
 
-const createCard = (team) => {
-  return team.map((member) => {
+// const createCard = (team) => {
+//   return team.map((member) => {
+//     return `<div class="card" style="width: 18rem">
+//   <div class="card-header">
+//     jane
+//     <p class="card-text">${member.role}</p>
+//   </div>
+//   <div class="card-body">
+//     <div class="card" style="width: 15rem">
+//       <ul class="list-group list-group-flush">
+//         <li class="list-group-item">${member} Id: ${member.id}</li>
+//         <li class="list-group-item">${member} Email: <a href = "mailto:someone@gmail.com.com" target = "_blank">${member.email}</a></li>
+//         <li class="list-group-item">${member} Office Number:</li>
+//       </ul>
+//     </div>
+//   </div>
+// </div>`;
+//   });
+// };
+
+const createcard = (teamMembers) => {
+  return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
   <div class="card-header">
     jane
@@ -26,14 +47,37 @@ const createCard = (team) => {
   <div class="card-body">
     <div class="card" style="width: 15rem">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">${member} Id: ${member.id}</li>
-        <li class="list-group-item">${member} Email: <a href = "mailto:someone@gmail.com.com" target = "_blank">${member.email}</a></li>
-        <li class="list-group-item">${member} Office Number:</li>
+        <li class="list-group-item">${member.role} Id: ${member.id}</li>
+        <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
+        <li class="list-group-item">${member.role} Office Number: ${member.officeNumber}</li>
       </ul>
     </div>
   </div>
 </div>`;
   });
+};
+
+const createCards = (team) => {
+  // let teamManager = [];
+  const teamManager = team.filter(function (employee) {
+    return employee.role === "Manager";
+  });
+
+  console.log("These are value in: " + teamManager);
+  console.log(teamManager);
+
+  let teamEngineer = [];
+  teamEngineer = team.filter((employee) => employee.role === "Engineer");
+  console.log("value" + teamEngineer);
+
+  let teamIntern = [];
+  teamIntern = team.filter((employee) => employee.role === "Intern");
+  console.log("in" + teamIntern);
+  const managerCard = createcard(teamManager);
+  const engineerCard = createcard(teamEngineer);
+  const internCard = createcard(teamIntern);
+
+  return `${managerCard}${engineerCard}${internCard}`;
 };
 
 // Generate html cards
@@ -66,7 +110,7 @@ const htmlGenerator = (team) => {
     </header>
     <main id="main" class="main">
     <div class = "d-flex flex-row flex-row justify-content-around mt-5" >
-      ${createCard(team)}
+      ${createCards(team)}
       </div>
     </main>
     <script src="index.js"></script>
@@ -92,14 +136,14 @@ const htmlGenerator = (team) => {
 //Import modules containing questions for different employee categories
 
 const init = async () => {
-  // const managerAnswers = await inquirer.prompt(managerQuestions);
+  const managerAnswers = await inquirer.prompt(managerQuestions);
+  console.log(managerAnswers);
 
   const manager = new Manager(
-    await inquirer.prompt(managerQuestions)
-    // managerAnswers.name,
-    // managerAnswers.id,
-    // managerAnswers.email,
-    // managerAnswers.officeNumber
+    managerAnswers.name,
+    managerAnswers.id,
+    managerAnswers.email,
+    managerAnswers.officeNumber
   );
 
   team.push(manager);
@@ -136,9 +180,9 @@ const init = async () => {
   console.log(team);
 
   const generatedHtml = htmlGenerator(team);
-  // const filePath = path.join(__dirname, "./dist", );
+  const filePath = path.join(__dirname, "../dist/index.html");
 
-  fs.writeFileSync("./index.html", generatedHtml);
+  fs.writeFileSync(filePath, generatedHtml);
 };
 
 init();

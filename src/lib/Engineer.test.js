@@ -1,5 +1,4 @@
 const Engineer = require("./Engineer");
-
 describe("Engineer", () => {
   it("should return github user name", () => {
     const expected = "jane12";
