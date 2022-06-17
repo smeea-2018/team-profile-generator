@@ -7,19 +7,19 @@ const managerQuestions = [
 
   {
     type: "input",
-    name: "managerName",
+    name: "name",
     message: "Please enter team manager name",
   },
 
   {
     type: "input",
-    name: "managerId",
+    name: "id",
     message: "Please enter manager ID:",
   },
 
   {
     type: "input",
-    name: "managerEmail",
+    name: "email",
     message: "Please enter manager email address:",
   },
 
@@ -42,25 +42,25 @@ selectionQuestions = [
 const engineerQuestions = [
   {
     type: "input",
-    name: "engineerName",
+    name: "name",
     message: "Please enter team engineer name",
   },
 
   {
     type: "input",
-    name: "engineerId",
+    name: "id",
     message: "Please enter engineer ID:",
   },
 
   {
     type: "input",
-    name: "engineerEmail",
+    name: "email",
     message: "Please enter engineer email address:",
   },
 
   {
     type: "input",
-    name: "githubUserName",
+    name: "githubName",
     message: "Please enter engineer github username::",
   },
 ];
@@ -68,19 +68,24 @@ const engineerQuestions = [
 const internQuestions = [
   {
     type: "input",
-    name: "internId",
+    name: "name",
+    message: "Please enter team engineer name",
+  },
+  {
+    type: "input",
+    name: "id",
     message: "Please enter intern ID:",
   },
 
   {
     type: "input",
-    name: "internEmail",
+    name: "email",
     message: "Please enter intern email address:",
   },
 
   {
     type: "input",
-    name: "internSchool",
+    name: "school",
     message: "Please enter intern school:",
   },
 ];

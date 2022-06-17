@@ -41,7 +41,7 @@ const createManagerCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
   <div class="card-header">
-    jane
+    ${member.name}
     <p class="card-text">${member.role}</p>
   </div>
   <div class="card-body">
@@ -61,7 +61,7 @@ const createEngineerCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
   <div class="card-header">
-    jane
+    ${member.name}
     <p class="card-text">${member.role}</p>
   </div>
   <div class="card-body">
@@ -81,7 +81,7 @@ const createInternCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
   <div class="card-header">
-    jane
+   ${member.name}
     <p class="card-text">${member.role}</p>
   </div>
   <div class="card-body">
@@ -206,10 +206,10 @@ const init = async () => {
       const internAnswers = await inquirer.prompt(internQuestions);
 
       const intern = new Intern(
-        internAnswers,
+        internAnswers.name,
         internAnswers.id,
         internAnswers.email,
-        internAnswers.officeNumber
+        internAnswers.school
       );
       team.push(intern);
     } else {
