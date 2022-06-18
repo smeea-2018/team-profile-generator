@@ -2,7 +2,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const path = require("path");
 
-const { Employee } = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const { Engineer } = require("./lib/Engineer");
 const { Intern } = require("./lib/Intern");
@@ -40,9 +39,9 @@ let inProgress = true;
 const createManagerCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
-  <div class="card-header">
+  <div class="card-header card text-center card-title">
     ${member.name}
-    <p class="card-text">${member.role}</p>
+    <p class="card text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
@@ -60,16 +59,16 @@ const createManagerCard = (teamMembers) => {
 const createEngineerCard = (teamMembers) => {
   return teamMembers.map((member) => {
     return `<div class="card" style="width: 18rem">
-  <div class="card-header">
+  <div class="card-header card text-center card-title">
     ${member.name}
-    <p class="card-text">${member.role}</p>
+    <p class="card text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${member.role} Id: ${member.id}</li>
         <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
-        <li class="list-group-item">${member.role} github: ${member.githubName}</li>
+        <li class="list-group-item">${member.role} github:<a href = ""https://github.com/smeea-2018/personal-portfolio ${member.githubName} target =_blank</a></li>
       </ul>
     </div>
   </div>
@@ -79,10 +78,10 @@ const createEngineerCard = (teamMembers) => {
 
 const createInternCard = (teamMembers) => {
   return teamMembers.map((member) => {
-    return `<div class="card" style="width: 18rem">
-  <div class="card-header">
+    return `<div class="card" style="width: 18rem  rem mb-5">
+  <div class="card-header card text-center card-title">
    ${member.name}
-    <p class="card-text">${member.role}</p>
+    <p class="card text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
@@ -148,7 +147,7 @@ const htmlGenerator = (team) => {
        <hr class="my-4">
     </header>
     <main id="main" class="main">
-    <div class = "d-flex flex-row flex-row justify-content-around mt-5" >
+    <div class = "d-flex flex-wrap flex-row justify-content-around mt-5" >
       ${createCards(team)}
       </div>
     </main>
