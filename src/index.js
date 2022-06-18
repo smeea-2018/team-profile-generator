@@ -68,7 +68,7 @@ const createEngineerCard = (teamMembers) => {
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${member.role} Id: ${member.id}</li>
         <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
-        <li class="list-group-item">${member.role} github:<a href = "https://github.com" target =_blank>${member.githubName} </a></li>
+        <li class="list-group-item">${member.role} github:<a href = "https://github.com/${member.githubName}" target =_blank>${member.githubName} </a></li>
       </ul>
     </div>
   </div>

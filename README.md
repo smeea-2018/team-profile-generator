@@ -62,9 +62,9 @@ MIT
 
 ## Mock-up:
 
-![Mock-up]()
+![Mock-up](./dist/assets/team-profile-generator.gif)
 
-<a href = "">Watch Video </a>
+<a href = "https://drive.google.com/file/d/1Rg1yfODL8BqJRcayH6_ObEtDqvK4So2w/view">Watch Video </a>
 
 ## Contact Me:
 
