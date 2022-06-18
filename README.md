@@ -42,14 +42,6 @@ JavaScript, Node.js, Inquirer
 
 Clone the repository using SSH keys:
 
-git clone git@github.com:## Technologies Used:
-
-JavaScript, Node.js, Inquirer
-
-## Installation:
-
-Clone the repository using SSH keys:
-
 git clone git@github.com:git@github.com:smeea-2018/team-profile-generator.git
 
 Install the required packages
@@ -59,6 +51,10 @@ npm install
 Start execution
 
 npm run start
+
+To run the test:
+
+npm run tes
 
 ## License:
 

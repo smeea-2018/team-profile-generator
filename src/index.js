@@ -3,8 +3,8 @@ const fs = require("fs");
 const path = require("path");
 
 const Manager = require("./lib/Manager");
-const { Engineer } = require("./lib/Engineer");
-const { Intern } = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const {
   managerQuestions,
@@ -38,10 +38,10 @@ let inProgress = true;
 
 const createManagerCard = (teamMembers) => {
   return teamMembers.map((member) => {
-    return `<div class="card" style="width: 18rem">
-  <div class="card-header card text-center card-title">
+    return `<div class="card mb-2" style="width: 18rem">
+  <div class="card-header card text-center card-title bg-secondary text-light">
     ${member.name}
-    <p class="card text-center">${member.role}</p>
+    <p class="text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
@@ -58,17 +58,17 @@ const createManagerCard = (teamMembers) => {
 
 const createEngineerCard = (teamMembers) => {
   return teamMembers.map((member) => {
-    return `<div class="card" style="width: 18rem">
-  <div class="card-header card text-center card-title">
+    return `<div class="card mb-2" style="width: 18rem">
+  <div class="card-header card text-center card-title bg-secondary text-light">
     ${member.name}
-    <p class="card text-center">${member.role}</p>
+    <p class=" text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${member.role} Id: ${member.id}</li>
         <li class="list-group-item">${member.role} Email: <a href = "mailto:${member.email}" target = "_blank">${member.email}</a></li>
-        <li class="list-group-item">${member.role} github:<a href = ""https://github.com/smeea-2018/personal-portfolio ${member.githubName} target =_blank</a></li>
+        <li class="list-group-item">${member.role} github:<a href = "https://github.com" target =_blank>${member.githubName} </a></li>
       </ul>
     </div>
   </div>
@@ -78,10 +78,10 @@ const createEngineerCard = (teamMembers) => {
 
 const createInternCard = (teamMembers) => {
   return teamMembers.map((member) => {
-    return `<div class="card" style="width: 18rem  rem mb-5">
-  <div class="card-header card text-center card-title">
+    return `<div class="card mb-2" style="width: 18rem  rem mb-5">
+  <div class="card-header card text-center card-title bg-secondary text-light">
    ${member.name}
-    <p class="card text-center">${member.role}</p>
+    <p class="text-center">${member.role}</p>
   </div>
   <div class="card-body">
     <div class="card" style="width: 15rem">
@@ -101,19 +101,15 @@ const createCards = (team) => {
     return employee.role === "Manager";
   });
 
-  console.log("These are value in: " + teamManager);
-  console.log(teamManager);
-
   let teamEngineer = [];
   teamEngineer = team.filter((employee) => employee.role === "Engineer");
-  console.log("value" + teamEngineer);
 
   let teamIntern = [];
   teamIntern = team.filter((employee) => employee.role === "Intern");
-  console.log("in" + teamIntern);
-  const managerCard = createManagerCard(teamManager);
-  const engineerCard = createEngineerCard(teamEngineer);
-  const internCard = createInternCard(teamIntern);
+
+  const managerCard = createManagerCard(teamManager).join("");
+  const engineerCard = createEngineerCard(teamEngineer).join("");
+  const internCard = createInternCard(teamIntern).join("");
 
   return `${managerCard}${engineerCard}${internCard}`;
 };
@@ -147,7 +143,7 @@ const htmlGenerator = (team) => {
        <hr class="my-4">
     </header>
     <main id="main" class="main">
-    <div class = "d-flex flex-wrap flex-row justify-content-around mt-5" >
+    <div class = "card d-flex flex-wrap flex-row justify-content-around mt-5" >
       ${createCards(team)}
       </div>
     </main>
@@ -175,7 +171,6 @@ const htmlGenerator = (team) => {
 
 const init = async () => {
   const managerAnswers = await inquirer.prompt(managerQuestions);
-  console.log(managerAnswers);
 
   const manager = new Manager(
     managerAnswers.name,
@@ -185,7 +180,6 @@ const init = async () => {
   );
 
   team.push(manager);
-  console.log(manager);
 
   // once you have the answers, create a new manager object and pass in these answers to the constructor
 
@@ -215,7 +209,6 @@ const init = async () => {
       inProgress = false;
     }
   }
-  console.log(team);
 
   const generatedHtml = htmlGenerator(team);
   const filePath = path.join(__dirname, "../dist/index.html");
